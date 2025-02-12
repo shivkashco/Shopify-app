@@ -13,6 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600&family=Montserrat:wght@400;500;600&family=Nunito:wght@400;600;700&family=Source+Sans+Pro:wght@400;600&family=Ubuntu:wght@400;500;700&family=Lora:wght@400;500;600&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;500;600&family=PT+Serif:wght@400;700&family=Quicksand:wght@400;500;600&family=Comfortaa:wght@400;500;600&family=Josefin+Sans:wght@400;500;600&family=Dancing+Script:wght@400;500;600&family=Pacifico&display=swap"
         rel="stylesheet">
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script>
 </head>
 
 <body>
