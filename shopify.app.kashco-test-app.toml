@@ -1,0 +1,22 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "f4bbbc65d93c4ca3b1dea5b1033b7085"
+application_url = "https://5656-124-253-5-15.ngrok-free.app/"
+embedded = true
+name = "Kashco test app"
+handle = "kashco-test-app"
+
+[webhooks]
+api_version = "2025-01"
+
+[auth]
+redirect_urls = [ "https://5656-124-253-5-15.ngrok-free.app/authenticate" ]
+
+[pos]
+embedded = true
+
+[app_preferences]
+url = "https://5656-124-253-5-15.ngrok-free.app/"
+
+[build]
+include_config_on_deploy = true

@@ -1,9 +1,12 @@
-import { Provider } from "@shopify/app-bridge-react";
+import { createContext, useContext, useState } from "react"; 
 import { AppProvider, Page } from "@shopify/polaris";
-import { useState } from "react";
 import enTranslations from "@shopify/polaris/locales/en.json";
 import MissingApiKey from "./components/MissingApiKey";
 import AgeRestrictionSettings from "./components/AgeRestrictionSettings";
+import { createApp } from "@shopify/app-bridge"; 
+
+// 🔹 Fix: Properly define context
+const AppBridgeContext = createContext(null);
 
 const App = () => {
     const [appBridgeConfig] = useState(() => {
@@ -11,7 +14,7 @@ const App = () => {
         window.__SHOPIFY_HOST = host;
         return {
             host,
-            apiKey: import.meta.env.VITE_SHOPIFY_API_KEY,
+            apiKey: import.meta.env.VITE_SHOPIFY_API_KEY, 
             forceRedirect: true,
         };
     });
@@ -23,15 +26,22 @@ const App = () => {
             </AppProvider>
         );
     }
+
+    const appBridge = createApp(appBridgeConfig);
+
     return (
         <AppProvider i18n={enTranslations}>
-            <Provider config={appBridgeConfig}>
+            <AppBridgeContext.Provider value={appBridge}>
                 <Page>
                     <AgeRestrictionSettings />
                 </Page>
-            </Provider>
+            </AppBridgeContext.Provider>
         </AppProvider>
     );
+};
+
+export const useAppBridge = () => {
+    return useContext(AppBridgeContext);
 };
 
 export default App;

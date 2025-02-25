@@ -6,7 +6,7 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "@shopify/app-bridge-react": "^3.7.9",
+        "@shopify/app-bridge-react": "^4.1.6",
         "@shopify/polaris": "^11.21.0",
         "@vitejs/plugin-react": "^4.1.0",
         "autoprefixer": "^10.4.20",
@@ -19,7 +19,9 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@shopify/app-bridge": "^3.7.10",
         "lucide-react": "^0.473.0",
-        "react-color": "^2.19.3"
+        "react-color": "^2.19.3",
+        "react-router-dom": "^6.29.0"
     }
 }

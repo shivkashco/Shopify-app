@@ -1,0 +1,22 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "50c71407c21161d788fa05f06b7588ad"
+application_url = "https://98f1-124-253-109-61.ngrok-free.app/"
+embedded = true
+name = "Icon-test-app"
+handle = "icon-test-app"
+
+[build]
+include_config_on_deploy = true
+
+[webhooks]
+api_version = "2025-01"
+
+[auth]
+redirect_urls = [ "https://98f1-124-253-109-61.ngrok-free.app/authenticate" ]
+
+[pos]
+embedded = true
+
+[app_preferences]
+url = "https://98f1-124-253-109-61.ngrok-free.app/"

@@ -5,8 +5,13 @@ import PopupDesignTab from './PopupDesignTab';
 import ProductSelectionList from './ProductSelectionList';
 import { tabs, validationTypes, pageViewTypes } from '../helpers/constants';
 import { Loader } from 'lucide-react';
+import { useAppBridge } from "../App";
+import { Redirect } from "@shopify/app-bridge/actions";
+
 
 const AgeRestrictionSettings = () => {
+    const app = useAppBridge();
+    const redirect = Redirect.create(app);
     const [selectedTab, setSelectedTab] = useState(0);
     const [toastMessage, setToastMessage] = useState('');
     const [loading, setLoading] = useState(false);
@@ -110,14 +115,29 @@ const AgeRestrictionSettings = () => {
         }
     }, [settings]);
 
+    const getShopName = () => {
+        const shopDomain = new URLSearchParams(window.location.search).get("shop");
+        return shopDomain || window.location.hostname;
+    };
+    
+    const viewThemeEmbedExtension = () => {
+        const activateAppId = "636a4293-2fc2-402b-af62-4ee393b139b6%2Fzo_app";
+        const url = `/themes/current/editor?context=apps&activateAppId=${encodeURIComponent(activateAppId)}`;
+        redirect.dispatch(Redirect.Action.ADMIN_PATH, url);
+    };
     return (
         <Frame>
             <Page title="Age Restriction Settings">
+                <div className="flex justify-end">
+                    <Button onClick={viewThemeEmbedExtension} primarySuccess>
+                        Preview Theme
+                    </Button>
+                </div>
                 <div className="max-w-4xl mx-auto">
                     <LegacyTabs selected={selectedTab} onSelect={handleTabChange} tabs={tabs}>
                         {selectedTab === 0 && (
                             <div className="space-y-2">
-                                <PopupDesignTab  onNext={() => setSelectedTab(1)} />
+                                <PopupDesignTab onNext={() => setSelectedTab(1)} />
                             </div>
                         )}
 
